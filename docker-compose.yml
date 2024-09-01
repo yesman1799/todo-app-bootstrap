@@ -1,0 +1,17 @@
+name: "springhelloworld"
+services:
+  mysql:
+    image: mariadb
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: yes
+    volumes:
+      - .data/mariadb:/var/lib/mysql
+    hostname: mariadb
+    ports:
+      - 3306:3306
+  phpmyadmin:
+    image: phpmyadmin
+    environment:
+      PMA_HOST: mariadb
+    ports:
+      - 80:80
